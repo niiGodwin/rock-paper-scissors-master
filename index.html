@@ -29,6 +29,18 @@
         color: hsl(228, 45%, 44%);
       }
     </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script> 
+      $(function(){
+        $("#rock").load("./resources/components/rock.html"); 
+        $("#paper").load("./resources/components/paper.html"); 
+        $("#scissors").load("./resources/components/scissors.html"); 
+      });
+    </script> 
+
+    
+
   </head>
   <body>
     <div class="container">
@@ -47,6 +59,29 @@
         </div>
       </div>
 
+      <div class="game-container">
+        <div >
+          <img id="triangle" src="./assets/bg-triangle.svg" />
+        <!-- </div> -->
+
+        <!-- <div style="display: flex; flex-direction: row; justify-content: space-between;"> --> 
+          <div id="rock-container">
+            <div id="rock" class="card"></div>
+          </div>
+
+          <div id="paper-container">
+            <div id="paper" class="card"></div>
+          </div>
+
+          <div id="scissors-container">
+            <div id="scissors" class="card"></div>
+          </div>
+        </div>
+
+        <button>Helloa</button>
+
+      </div>
+
       <!-- <div class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
@@ -55,4 +90,5 @@
       </div>
     </div>
   </body>
+  <script src="/resources/javascript/script.js"></script>
 </html>
