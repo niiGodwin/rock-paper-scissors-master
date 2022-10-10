@@ -1,296 +1,126 @@
-document.querySelector(".rules-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  document
-    .querySelector(".rules-popup")
-    .classList.toggle("rules-popup--active");
-  document.querySelector(".overlay").classList.toggle("overlay--active");
-});
-document.querySelector(".close-icon").addEventListener("click", () => {
-  document
-    .querySelector(".rules-popup")
-    .classList.remove("rules-popup--active");
-  document.querySelector(".overlay").classList.toggle("overlay--active");
+const modal = document.querySelector("#modal");
+const modalContent = document.querySelector("#modalContent");
+const btnOpenModal = document.querySelector("#openModal");
+const xCloseModal = document.querySelector("#closeModal");
+
+btnOpenModal.addEventListener("click", () => {
+  modal.style.display = "block";
+  modalContent.style.top = 0;
 });
 
-let gameItemsCont = Array.from(
-  document.querySelectorAll("div[class^='game-body__circle-container'")
-);
-let tempoV;
-let tempoArr = [];
-let stateFlag = false;
-let score = document.querySelector(".header__value");
-
-setScore((state = "init"), (tar = score));
-// Loop through Each Game Item
-gameItemsCont.forEach((e) => {
-  // Listen For Click Event
-  e.addEventListener("click", function () {
-    // Store The Clicked Item in Variable
-    tempoV = e;
-    // Trigger Game Fuction
-    swipe(
-      (flag = stateFlag),
-      (arr = gameItemsCont),
-      (slim = tempoV),
-      (tmpArr = tempoArr)
-    );
-    // Swipe Game State Flag
-    stateFlag = true;
-    // Play Again
-  });
+xCloseModal.addEventListener("click", () => {
+  modal.style.display = "none";
 });
-// Stage 1 to 2 trigger Function
-function swipe(flag, arr, slim, tmpArr) {
-  // Stage 2 If TRUE
-  if (flag === true) {
-  }
-  // Stage 1 if FALSE. And Go To Stage 2
-  else {
-    // Add Stage 2 Class to Element
-    document.querySelector(".bg-triangle").classList.add("bg-triangle--s2");
-    document
-      .querySelector(".choosed-item--com__bg-circle")
-      .classList.add("choosed-item--com__bg-circle--s2");
 
-    // Separation of the elements of an array
-    arr.filter((e) => {
-      // Make Sure of Regarding Clicked Item
-      if (slim !== arr[arr.indexOf(e)]) {
-        // Add NotClicked Items
-        tmpArr.push(e);
-      }
-    });
-    // Choose Random Item
-    let comItem = tmpArr[Math.floor(Math.random() * 2)];
-    // Add Classes
-    slim.classList.add("choosed-item--user");
-    tmpArr.forEach((e) => {
-      e.classList.add("unchoosed-item");
-    });
-    // Show Computer Choice
-    setTimeout(() => {
-      comItem.classList.remove("unchoosed-item");
-      comItem.classList.add("choosed-item--com");
-    }, 1000);
-    setTimeout(() => {
-      document
-        .querySelector(".choosed-item--com__bg-circle")
-        .classList.remove("choosed-item--com__bg-circle--s2");
-    }, 1000);
-    // Create Heading
-    let headingUser = document.createElement("h3");
-    let headingUserContent = document.createTextNode("You Picked");
-    headingUser.classList.add("you-picked");
-    headingUser.append(headingUserContent);
-    slim.append(headingUser);
-    let headingCom = document.createElement("h3");
-    let headingComContent = document.createTextNode("The house Picked");
-    headingCom.append(headingComContent);
-    headingCom.classList.add("you-picked");
-    comItem.append(headingCom);
-    // Check for The Winning Item
-    // Check for User Choice and Compare With Game Rules
-    /* Game RULES
-          Paper beats Rock beats Scissors beats Paper
-      */
-    if (slim.className.includes("paper")) {
-      // If User's Choice is paper, then check for possibilities
-      if (comItem.className.includes("rock")) {
-        // WIN
-        gameOver((state = "win"), (hUser1 = headingUser), (hCom1 = headingCom));
-        setTimeout(() => {
-          setScore((state = "win"), (tar = score));
-        }, 1500);
-        // Add Highlight Effect For Choosed Item
-        setTimeout(() => {
-          highlightEffect((slim = slim));
-        }, 1250);
-      } else {
-        //LOSE
-        gameOver(
-          (state = "lose"),
-          (hUser1 = headingUser),
-          (hCom1 = headingCom)
-        );
-        setTimeout(() => {
-          setScore((state = "lose"), (tar = score));
-        }, 1500);
-        // Add Highlight Effect For Choosed Item
-        setTimeout(() => {
-          highlightEffect((slim = comItem));
-        }, 1250);
-      }
-    } else if (slim.className.includes("rock")) {
-      if (comItem.className.includes("scissors")) {
-        // WIN
-        gameOver((state = "win"), (hUser1 = headingUser), (hCom1 = headingCom));
-        setTimeout(() => {
-          setScore((state = "win"), (tar = score));
-        }, 1500);
-        // Add Highlight Effect For Choosed Item
-        setTimeout(() => {
-          highlightEffect((slim = slim));
-        }, 1250);
-      } else {
-        //LOSE
-        gameOver(
-          (state = "lose"),
-          (hUser1 = headingUser),
-          (hCom1 = headingCom)
-        );
-        setTimeout(() => {
-          setScore((state = "lose"), (tar = score));
-        }, 1500);
-        // Add Highlight Effect For Choosed Item
-        setTimeout(() => {
-          highlightEffect((slim = comItem));
-        }, 1250);
-      }
-    } else if (slim.className.includes("scissors")) {
-      if (comItem.className.includes("rock")) {
-        //LOSE
-        gameOver(
-          (state = "lose"),
-          (hUser1 = headingUser),
-          (hCom1 = headingCom)
-        );
-        setTimeout(() => {
-          setScore((state = "lose"), (tar = score));
-        }, 1500);
-        // Add Highlight Effect For Choosed Item
-        setTimeout(() => {
-          highlightEffect((slim = comItem));
-        }, 1250);
-      } else {
-        // WIN
-        gameOver((state = "win"), (hUser1 = headingUser), (hCom1 = headingCom));
-        setTimeout(() => {
-          setScore((state = "win"), (tar = score));
-        }, 1500);
-        // Add Highlight Effect For Choosed Item
-        setTimeout(() => {
-          highlightEffect((slim = slim));
-        }, 1250);
-      }
-    }
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
-}
+});
+// GLOBALS
+const allChoices = ["scissors", "spock", "paper", "lizard", "rock"];
+const classicChoices = ["rock", "paper", "scissors"];
+const startPage = document.querySelector("#startPage");
+const arrChoices = startPage.querySelectorAll("div");
+const resultPage = document.querySelector("#resultPage");
+const containerScore = document.querySelectorAll(".score")[0];
+const score = document.querySelector("#score");
+const userIcon = resultPage.querySelector("#userIcon");
+const houseIcon = resultPage.querySelector("#houseIcon");
+const messageWhoWin = document.querySelector("#whoWin");
+const playAgainButton = document.querySelector("#playAgain");
 
-function highlightEffect(slim) {
-  let c1 = document.createElement("div");
-  let c2 = document.createElement("div");
-  let c3 = document.createElement("div");
-  slim.append(c1);
-  slim.append(c2);
-  slim.append(c3);
-  c1.classList.add("circle");
-  c1.classList.add("circle--1");
-  c2.classList.add("circle");
-  c2.classList.add("circle--2");
-  c3.classList.add("circle");
-  c3.classList.add("circle--3");
-}
-function gameOver(state, hUser1, hCom1) {
-  let heading = document.createElement("h2");
-  let playAgain = document.createElement("button");
-  let gameOverCont = document.createElement("div");
-  let playAgainSen = document.createTextNode("Play Again");
-  let winSen = document.createTextNode("You Win");
-  let loseSen = document.createTextNode("You Lose");
-  heading.classList.add("gameoversen");
-  playAgain.classList.add("btn");
-  gameOverCont.classList.add("game-over-container");
-  playAgain.append(playAgainSen);
-  if (state == "win") {
-    heading.append(winSen);
-  } else if (state == "lose") {
-    heading.append(loseSen);
+// START PLAY
+const handleClick = (event) => {
+  document.body.classList.toggle("result");
+  userIcon.classList.remove("scissors", "spock", "paper", "lizard", "rock");
+  houseIcon.classList.remove("scissors", "spock", "paper", "lizard", "rock");
+  playAgainButton.style.display = "none";
+  messageWhoWin.style.display = "none";
+  houseIcon.style.display = "none";
+
+  console.log(event.target.dataset);
+
+  const userPlayerChoice = event.target.dataset.choice;
+  let housePlayerChoice = "";
+  let housePlayerIndex = 0;
+
+  if (event.target.dataset.gamemode == "classic") {
+    housePlayerIndex = Math.floor(Math.random() * 3);
+    housePlayerChoice = classicChoices[housePlayerIndex];
+  } else {
+    housePlayerIndex = Math.floor(Math.random() * 5);
+    housePlayerChoice = allChoices[housePlayerIndex];
   }
-  gameOverCont.append(heading);
-  gameOverCont.append(playAgain);
-  setTimeout(() => {
-    document
-      .querySelector("main")
-      .insertBefore(gameOverCont, document.querySelector(".rules-btn"));
-    // document.querySelector('main').insertBefore(playAgain, document.querySelector('.rules-btn'));
-    document
-      .querySelector(".choosed-item--user")
-      .classList.add("choosed-item--user--s4");
-    document
-      .querySelector(".choosed-item--com")
-      .classList.add("choosed-item--com--s4");
-    // document.querySelector('.game-body__big-circle').classList.add('game-body__big-circle--s4');
-    // document.querySelector('.game-body__tiny-circle').classList.add('game-body__tiny-circle--s4');
-    Array.from(document.querySelectorAll(".game-body__big-circle")).forEach(
-      (e) => {
-        e.classList.add("game-body__big-circle--s4");
-      }
-    );
-    Array.from(document.querySelectorAll(".game-body__tiny-circle")).forEach(
-      (e) => {
-        e.classList.add("game-body__tiny-circle--s4");
-      }
-    );
-  }, 1500);
-  playAgain.addEventListener("click", () => {
-    initGame(
-      (btn = playAgain),
-      (heading = heading),
-      (hUser = hUser1),
-      (hCom = hCom1),
-      (gmovCon = gameOverCont)
-    );
-  });
-}
-function initGame(btn, heading, hUser, hCom, gmovCon) {
-  document.querySelector(".bg-triangle").classList.remove("bg-triangle--s2");
-  document
-    .querySelector(".choosed-item--com__bg-circle")
-    .classList.remove("choosed-item--com__bg-circle--s2");
-  document
-    .querySelector(".choosed-item--user")
-    .classList.remove("choosed-item--user--s4");
-  document
-    .querySelector(".choosed-item--com")
-    .classList.remove("choosed-item--com--s4");
-  Array.from(document.querySelectorAll(".game-body__big-circle")).forEach(
-    (e) => {
-      e.classList.remove("game-body__big-circle--s4");
-    }
-  );
-  Array.from(document.querySelectorAll(".game-body__tiny-circle")).forEach(
-    (e) => {
-      e.classList.remove("game-body__tiny-circle--s4");
-    }
-  );
-  gameItemsCont.forEach((e) => {
-    if (e.className.includes("choosed-item--user")) {
-      for (let i = 1; i <= 3; i++) {
-        document.querySelector(`.circle--${i}`).remove();
-      }
-      e.classList.remove("choosed-item--user");
-    } else if (e.className.includes("choosed-item--com")) {
-      e.classList.remove("choosed-item--com");
+
+  startPage.style.display = "none";
+  resultPage.style.display = "block";
+  userIcon.classList.toggle(userPlayerChoice);
+  scoreTotal = 0;
+  // PRINT SCORE
+  whoWin = () => {
+    scoreTotal = parseInt(score.innerHTML);
+    let showScoreTotal = () => {
+      setTimeout(() => {
+        score.innerHTML = scoreTotal;
+        let bgScore =
+          scoreTotal < 0
+            ? "hsl(0, 100%, 50%)"
+            : scoreTotal == 0
+            ? "hsl(0, 0%, 100%)"
+            : "rgb(183, 241, 183)";
+        containerScore.style.backgroundColor = bgScore;
+      }, 1000);
+    };
+    // GAME RULES CONDITIONS
+    if (userPlayerChoice == housePlayerChoice) {
+      messageWhoWin.innerHTML = '<div id="draw-message">DRAW<div>';
+      setTimeout(() => {}, 1000);
+    } else if (
+      (userPlayerChoice == "scissors" &&
+        (housePlayerChoice == "spock" || housePlayerChoice == "rock")) ||
+      (userPlayerChoice == "spock" &&
+        (housePlayerChoice == "paper" || housePlayerChoice == "lizard")) ||
+      (userPlayerChoice == "paper" &&
+        (housePlayerChoice == "scissors" || housePlayerChoice == "lizard")) ||
+      (userPlayerChoice == "lizard" &&
+        (housePlayerChoice == "scissors" || housePlayerChoice == "rock")) ||
+      (userPlayerChoice == "rock" &&
+        (housePlayerChoice == "spock" || housePlayerChoice == "paper"))
+    ) {
+      messageWhoWin.innerHTML = '<div id="you-lose-message">YOU LOSE</div>';
+      scoreTotal = scoreTotal - 1;
+      setTimeout(() => {}, 1000);
+      showScoreTotal();
     } else {
-      e.classList.remove("unchoosed-item");
+      messageWhoWin.innerHTML = '<div id="you-win-message">YOU WIN</div>;';
+      scoreTotal = scoreTotal + 1;
+      setTimeout(() => {}, 1000);
+      showScoreTotal();
     }
-  });
-  btn.remove();
-  heading.remove();
-  gmovCon.remove();
-  hUser.remove();
-  hCom.remove();
-  stateFlag = false;
-  tempoArr = [];
+  };
+
+  setTimeout(() => {
+    whoWin();
+  }, 1000);
+
+  setTimeout(() => {
+    houseIcon.style.display = "block";
+    houseIcon.classList.add(housePlayerChoice);
+    setTimeout(() => {
+      messageWhoWin.style.display = "block";
+      playAgainButton.style.display = "block";
+    }, 1000);
+  }, 1000);
+};
+
+for (let el of arrChoices) {
+  el.addEventListener("click", handleClick);
+  el.addEventListener("keypress", handleClick);
 }
-function setScore(state, tar) {
-  if (state == "win") {
-    tar.textContent++;
-  } else if (state == "lose") {
-    if (tar.textContent > 0) {
-      tar.textContent--;
-    }
-  } else if (state == "init") {
-    tar.textContent = 0;
-  }
-}
+
+playAgainButton.addEventListener("click", () => {
+  document.body.classList.remove("result");
+  startPage.style.display = "block";
+  resultPage.style.display = "none";
+});

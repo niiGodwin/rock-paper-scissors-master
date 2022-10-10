@@ -12,7 +12,7 @@
       href="./images/favicon-32x32.png"
     /> -->
 
-    <link rel="stylesheet" href="./resources/css/style.css" />
+    <link rel="stylesheet" href="./resources/css/classic.css" />
 
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
@@ -23,10 +23,7 @@
     <h1 aria-hidden="true">Game | Rock, Paper, Scissors, Lizard, Spock</h1>
     <div class="header">
       <div class="logo">
-        <img
-          src="assets/logo-bonus.svg"
-          alt="Rock,Paper,Scissors,Lizard,Spock"
-        />
+        <img src="assets/logo.svg" alt="Rock,Paper,Scissors,Lizard,Spock" />
       </div>
 
       <div class="score" role="region">
@@ -38,20 +35,13 @@
 
     <div class="main">
       <section id="startPage">
-        <h2 aria-hidden="true">Home Page | Start Game</h2>
         <div
           data-choice="scissors"
           class="icon scissors"
           role="button"
           tabindex="1"
           aria-label="scissors"
-        ></div>
-        <div
-          data-choice="spock"
-          class="icon spock"
-          role="button"
-          tabindex="2"
-          aria-label="spock"
+          data-gameMode="classic"
         ></div>
         <div
           data-choice="paper"
@@ -59,13 +49,7 @@
           role="button"
           tabindex="3"
           aria-label="paper"
-        ></div>
-        <div
-          data-choice="lizard"
-          class="icon lizard"
-          role="button"
-          tabindex="4"
-          aria-label="lizard"
+          data-gameMode="classic"
         ></div>
         <div
           data-choice="rock"
@@ -73,6 +57,7 @@
           role="button"
           tabindex="5"
           aria-label="rock"
+          data-gameMode="classic"
         ></div>
       </section>
 
@@ -89,16 +74,16 @@
         </div>
       </section>
     </div>
+    <!-- .main -->
 
     <div>
       <button id="openModal">RULES</button>
     </div>
-    <!-- .main -->
 
     <div id="modal" aria-hidden="true" role="dialog">
       <div id="modalContent">
         <button id="closeModal">&times;</button>
-        <p><img src="/assets/image-rules-bonus.svg" alt="Game Rules" /></p>
+        <p><img src="/assets/image-rules.svg" alt="Game Rules" /></p>
       </div>
     </div>
     <!-- /#modal -->
