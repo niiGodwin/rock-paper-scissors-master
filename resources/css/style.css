@@ -1,77 +1,64 @@
-/* html {
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
   margin: 0;
-  border: 0;
-  font-family: "Red Hat Display", sans-serif;
-  max-width: 2000px;
-  background-color: #1f3757;
+  padding: 0;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
+main {
+  position: relative;
+  margin-top: 10rem;
 }
 
-.header-container {
-  width: 50%;
-  border-radius: 10px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #ffffff3b;
+header.header {
+  border: 5px solid hsl(217, 16%, 45%);
+  border-radius: 5px;
+  padding: 1.5rem;
+  width: 30rem;
+  margin: 2rem auto;
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px;
-}
-
-.game-name h3 {
-  margin: auto;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.score {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #ffffff;
-  padding: 0 20px;
-
-  border-radius: 10px;
-  border-style: solid;
-  border-width: 2px;
+  transition: width 0.5s ease-in-out;
 }
 
-.score h1 {
-  font-size: 40px;
+.heading-main {
+  color: #ddd;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 0.85;
+  font-size: 2rem;
 }
-
-.score h3 {
-  font-size: 10px;
-  font-weight: bold;
+.header__score-box {
+  padding: 1rem 2rem;
+  background-color: #ddd;
+  text-align: center;
+  border-radius: 5px;
 }
-
-.card-container {
-  width: 100px;
-  height: 100px;
-  background-color: #ffffff;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 120px;
-  border-style: solid;
-  border-width: 15px;
-  color: rgb(242, 131, 12);
+.heading-custom {
+  text-transform: uppercase;
+  color: hsl(229, 64%, 46%);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
 }
-
-.game-container {
-  background-color: #959da6;
-  margin-top: 100px;
+.header__value {
+  color: hsl(229, 25%, 31%);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: all 0.3s ease-in-out;
 }
-
- */
