@@ -60,5 +60,116 @@ header.header {
   font-size: 4rem;
   font-weight: 700;
   line-height: 1;
-  transition: all 0.3s ease-in-out;
+}
+
+.game-body {
+  width: 30rem;
+  min-height: 26.25rem;
+  margin: auto;
+  position: relative;
+}
+
+.bg-triangle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 75%;
+}
+
+.game-body__circle-container-paper {
+  position: absolute;
+  left: 0;
+  top: -6.5rem;
+}
+
+.game-body__circle-container-scissors {
+  position: absolute;
+  right: 0;
+  top: -6.5rem;
+}
+.game-body__circle-container-rock {
+  position: absolute;
+  left: 50%;
+  bottom: 6rem;
+  transform: translateX(-50%);
+}
+
+.game-body__big-circle {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 3px rgb(0 0 0 / 25%);
+}
+
+.game-body__big-circle--light-blue,
+.game-body__big-circle--light-yellow,
+.game-body__big-circle--light-red {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.game-body__big-circle--light-blue {
+  background-image: linear-gradient(
+    120deg,
+    hsl(230, 89%, 62%),
+    hsl(230, 89%, 65%)
+  );
+}
+
+.game-body__big-circle--light-yellow {
+  background-image: linear-gradient(
+    120deg,
+    hsl(39, 89%, 49%),
+    hsl(40, 84%, 53%)
+  );
+}
+
+.game-body__big-circle--light-red {
+  background-image: linear-gradient(
+    120deg,
+    hsl(349, 71%, 52%),
+    hsl(349, 70%, 56%)
+  );
+}
+
+.game-body__tiny-circle {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.game-body__tiny-circle--dark-white {
+  background-color: #ddd;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rules-btn {
+  color: #c9c9c9;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.75rem 0;
+  border: 1.5px solid #c9c9c9;
+  border-radius: 7px;
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+  margin: 5rem auto;
+  width: 11rem;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.2;
+  z-index: 999;
 }
