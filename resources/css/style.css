@@ -51,7 +51,7 @@ body {
   max-width: 42rem;
   margin: 0 auto;
   height: 50rem;
-  background-image: url(assets/bg-pentagon.svg);
+  background-image: url(../../assets/bg-pentagon.svg);
   background-repeat: no-repeat;
   background-size: 70%;
   background-position: center 6rem;
@@ -82,31 +82,31 @@ section h2 {
 .scissors {
   top: 0;
   left: calc(50% - 6.5rem);
-  background-image: url(assets/icon-scissors.svg);
+  background-image: url(../../assets/icon-scissors.svg);
   border-color: hsl(40, 84%, 53%);
 }
 .spock {
   top: 11rem;
   left: calc(50% - 21rem);
-  background-image: url(assets/icon-spock.svg);
+  background-image: url(../../assets/icon-spock.svg);
   border-color: hsl(189, 58%, 57%);
 }
 .paper {
   top: 11rem;
   right: calc(50% - 21rem);
-  background-image: url(assets/icon-paper.svg);
+  background-image: url(../../assets/icon-paper.svg);
   border-color: hsl(231, 91%, 66%);
 }
 .lizard {
   top: 29rem;
   left: calc(50% - 15rem);
-  background-image: url(/assets/icon-lizard.svg);
+  background-image: url(../../assets/icon-lizard.svg);
   border-color: hsl(261, 63%, 63%);
 }
 .rock {
   top: 29rem;
   right: calc(50% - 15rem);
-  background-image: url(/assets/icon-rock.svg);
+  background-image: url(../../assets/icon-rock.svg);
   border-color: hsl(350, 68%, 56%);
 }
 #openModal {
